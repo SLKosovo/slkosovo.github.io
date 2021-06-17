@@ -15,34 +15,115 @@ body { margin: 0; padding: 0; }
 <div id="map"></div>
 
 <script>
-	// TO MAKE THE MAP APPEAR YOU MUST
-	// ADD YOUR ACCESS TOKEN FROM
-	// https://account.mapbox.com
 	mapboxgl.accessToken = 'pk.eyJ1Ijoic2xrb3Nvdm8iLCJhIjoiY2tuc3YwNjNuMTJnNDJ1cXdhazVydDZ2cSJ9.QEeEU3pdlV2hBg245jVTJg';
     var map = new mapboxgl.Map({
         container: 'map', // container ID
         style: 'mapbox://styles/slkosovo/ckq0pzin709if18np1rj7kbza', // style URL
-        zoom: 7, // starting zoom
+        zoom: 11, // starting zoom
         center: [20.6263,42.7749] // starting center
     });
 
-    map.on('load', function () {
-        map.addSource('forest', {
-            type: 'geojson',
-            // Use a URL for the value for the `data` property.
-            data: 'https://rawcdn.githack.com/SLKosovo/slkosovo.github.io/e7a48a04d93666039a7d0a20def786926970b25f/map/slider/deforestation/LostForest_2001.geojson'
-        });
 
-        map.addLayer({
-            'id': 'forest-layer',
-            'type': 'fill',
-            'source': 'forest',
-            'layout': {},
-            'paint': {
-            'fill-color': '#0080ff', // blue color fill
-            'fill-opacity': 1
-            }
-        });
+    var arrayOfYear = [
+        {
+            'year' : '2001',
+            'color' : '#FF5733'
+        },
+        {
+            'year' : '2002',
+            'color' : '#F9FF33'
+        },
+        {
+            'year' : '2003',
+            'color' : '#B8FF33'
+        },
+        {
+            'year' : '2004',
+            'color' : '#ABE7E3'
+        },
+        {
+            'year' : '2005',
+            'color' : '#D2E7AB'
+        },
+        {
+            'year' : '2006',
+            'color' : '#00FFEC'
+        },
+        {
+            'year' : '2007',
+            'color' : '#7CD1FE'
+        },
+        {
+            'year' : '2008',
+            'color' : '#F1BBFF'
+        },
+        {
+            'year' : '2009',
+            'color' : '#93AFFF'
+        },
+        {
+            'year' : '2010',
+            'color' : '#B0FC75'
+        },
+        {
+            'year' : '2011',
+            'color' : '#FC3D3D'
+        },
+        {
+            'year' : '2012',
+            'color' : '#F905FD'
+        },
+        {
+            'year' : '2013',
+            'color' : '#F9DEF5'
+        },
+        {
+            'year' : '2014',
+            'color' : '#FA688E'
+        },
+        {
+            'year' : '2015',
+            'color' : '#FFDA85'
+        },
+        {
+            'year' : '2016',
+            'color' : '#7ADFFF'
+        },
+        {
+            'year' : '2017',
+            'color' : '#FFD0EF'
+        },
+        {
+            'year' : '2018',
+            'color' : '#B657F7'
+        },
+        {
+            'year' : '2019',
+            'color' : '#B4B6E4'
+        },
+    ];
+
+    map.on('load', function () {
+        
+        for(var i = 0; i < 20; i++ ) {
+
+            map.addSource('forest'+i, {
+                type: 'geojson',
+                // Use a URL for the value for the `data` property.
+                data: 'https://rawcdn.githack.com/SLKosovo/slkosovo.github.io/e7a48a04d93666039a7d0a20def786926970b25f/map/slider/deforestation/LostForest_'+arrayOfYear[i]['year']+'.geojson'
+            });
+
+            map.addLayer({
+                'id': 'forest-layer'+i,
+                'type': 'fill',
+                'source': 'forest'+i,
+                'layout': {},
+                'paint': {
+                'fill-color': arrayOfYear[i]['color'],
+                'fill-opacity': 1
+                }
+            });
+        }
     });
 </script>
 

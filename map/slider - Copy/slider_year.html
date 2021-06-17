@@ -18,7 +18,7 @@ body { margin: 0; padding: 0; }
 	mapboxgl.accessToken = 'pk.eyJ1Ijoic2xrb3Nvdm8iLCJhIjoiY2tuc3YwNjNuMTJnNDJ1cXdhazVydDZ2cSJ9.QEeEU3pdlV2hBg245jVTJg';
 var map = new mapboxgl.Map({
 container: 'map', // container ID
-style: 'mapbox://styles/mapbox/satellite-v9', // style URL
+style: 'mapbox://styles/mapbox/light-v10', // style URL
 zoom: 7, // starting zoom
 center: [20.6263,42.7749] // starting center
 });
@@ -27,7 +27,7 @@ map.on('load', function () {
 map.addSource('forest', {
 type: 'geojson',
 // Use a URL for the value for the `data` property.
-data: 'https://github.com/SLKosovo/slkosovo.github.io/blob/main/map/slider/deforestation/LostForest_2001.geojson'
+data: 'https://rawcdn.githack.com/SLKosovo/slkosovo.github.io/e7a48a04d93666039a7d0a20def786926970b25f/map/slider/deforestation/LostForest_2001.geojson'
 });
  
 map.addLayer({
